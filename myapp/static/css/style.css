@@ -1,4 +1,4 @@
-<style>
+
         * {
             box-sizing: border-box;
         }
@@ -66,4 +66,9 @@
             color: green;
             text-align: center;
         }
-</style>
+    
+       nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    padding: 5px;
+}

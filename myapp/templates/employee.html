@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .field {
+            margin: 16px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .field input {
+            margin: 0;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h2>Employee Details</h2>
+        <p>Enter the employee information below.</p>
+
+        {% for message in messages %}
+            <div class="success">{{ message }}</div>
+        {% endfor %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="field">
+                <label for="name">Full Name</label>
+                <input id="name" type="text" name="name" maxlength="100"
+                       value="{{ request.POST.name|default:'' }}" required>
+            </div>
+
+            <div class="field">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email"
+                       value="{{ request.POST.email|default:'' }}" required>
+            </div>
+
+            <div class="field">
+                <label for="position">Position</label>
+                <input id="position" type="text" name="position" maxlength="100"
+                       value="{{ request.POST.position|default:'' }}" required>
+            </div>
+
+            <div class="field">
+                <label for="department">Department</label>
+                <input id="department" type="text" name="department" maxlength="100"
+                       value="{{ request.POST.department|default:'' }}" required>
+            </div>
+
+            <div class="field">
+                <label for="hire_date">Hire date</label>
+                <input id="hire_date" type="date" name="hire_date"
+                       value="{{ request.POST.hire_date|default:'' }}" required>
+            </div>
+
+            <button type="submit">Save Employee</button>
+        </form>
+
+        <a class="back-link" href="{% url 'home' %}">Back to home</a>
+    </main>
+</body>
+</html>

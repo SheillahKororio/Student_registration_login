@@ -71,10 +71,19 @@
             margin-bottom: 10px;
             text-align: center;
         }
+nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    padding: 5px;
+}
     </style>
 </head>
 
 <body>
+    <nav>
+        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="{% url 'employee' %}">Add Employee</a>
+    </nav>
 
 <div class="container">
 
